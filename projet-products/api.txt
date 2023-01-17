@@ -1,1 +1,9 @@
+link de api
 https://dummyjson.com/
+
+
+
+ajouter
+http://127.0.0.1:8000/api/ajouter?
+title=title1&description=aa&price=12&
+discountPercentage=12&rating=33&stock=11&brand=GGG&category=KK&thumbnail=JJ

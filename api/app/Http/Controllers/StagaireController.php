@@ -41,6 +41,10 @@ class StagaireController extends Controller
                 // }
                 return $search;
     }
+    public function index3(){
+        $all = Stagaire::all();
+                return $all;
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -82,7 +86,8 @@ class StagaireController extends Controller
      */
     public function edit($id)
     {
-        //
+        $student=Stagaire::findOrFail($id);
+        return $student;
     }
 
     /**

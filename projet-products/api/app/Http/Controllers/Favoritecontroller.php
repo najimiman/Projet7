@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Favorite;
 use Illuminate\Http\Request;
 
 class Favoritecontroller extends Controller
@@ -34,7 +35,18 @@ class Favoritecontroller extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $favorite=new Favorite();
+        $favorite->title=$request->input('title');
+        $favorite->description=$request->input('description');
+        $favorite->price=$request->input('price');
+        $favorite->discountPercentage=$request->input('discountPercentage');
+        $favorite->rating=$request->input('rating');
+        $favorite->stock=$request->input('stock');
+        $favorite->brand=$request->input('brand');
+        $favorite->category=$request->input('category');
+        $favorite->thumbnail=$request->input('thumbnail');
+        $favorite->save();
+        return $favorite;
     }
 
     /**

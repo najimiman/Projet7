@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Favoritecontroller;
 use App\Http\Controllers\StagaireController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -18,5 +19,4 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::get('search/{nmpr}',[StagaireController::class,'index']);
-Route::get('search2/{nmpr}',[StagaireController::class,'index2']);
+Route::post('ajouter',[Favoritecontroller::class,'store'])->name('ajouter');

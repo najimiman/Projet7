@@ -20,3 +20,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 Route::get('search/{nmpr}',[StagaireController::class,'index']);
 Route::get('search2/{nmpr}',[StagaireController::class,'index2']);
+Route::get('all',[StagaireController::class,'index3']);
+Route::get('edit/{id}',[StagaireController::class,'edit']);
