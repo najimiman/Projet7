@@ -32,22 +32,24 @@ class Home extends React.Component{
     handeledit=(id)=>{
         axios.get('https://dummyjson.com/products/'+id).then(res=>{
             console.log(res.data);
-                    this.setState({
-                        id:res.data.id,
-                        title:res.data.title,
-                        description:res.data.description,
-                        price:res.data.price,
-                        discountPercentage:res.data.discountPercentage,
-                        rating:res.data.rating,
-                        stock:res.data.stock,
-                        brand:res.data.brand,
-                        category:res.data.category,
-                        thumbnail:res.data.thumbnail
-                    })
+            axios.post('http://127.0.0.1:8000/api/ajouter',res.data)
+                    // this.setState({
+                    //     id:res.data.id,
+                    //     title:res.data.title,
+                    //     description:res.data.description,
+                    //     price:res.data.price,
+                    //     discountPercentage:res.data.discountPercentage,
+                    //     rating:res.data.rating,
+                    //     stock:res.data.stock,
+                    //     brand:res.data.brand,
+                    //     category:res.data.category,
+                    //     thumbnail:res.data.thumbnail
+                    // })
                 })
-                axios.post('http://127.0.0.1:8000/api/ajouter',id).then(res=>{
-                    console.log(res.data);
-                        })
+                console.log(this.state);
+                // axios.post('http://127.0.0.1:8000/api/ajouter',id).then(res=>{
+                //     console.log(res.data);
+                //         })
     }
     componentDidMount=()=>{
         this.Afficherproducts();

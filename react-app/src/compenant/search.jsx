@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 class Search extends React.Component{
     state={
-        Nom:'',Result:'',list:[],Nmpre:'',Nom2:'',id2:'',bb:''
+        Nom:'',Result:'',list:[],Nmpre:'',Nom2:'',id2:'',bb:'',list2:[]
     }
     handelsearch=(e)=>{
         if(e!=''){
@@ -26,14 +26,12 @@ class Search extends React.Component{
         })
     }
     handelsearch2=(e)=>{
-        // if(e!=''){
             axios.get('http://127.0.0.1:8000/api/search2/'+e.target.value).then(res=>{
                 console.log(res.data);
                 this.setState({
                     list:res.data
                 })
             })
-        // }
     }
    
     // componentDidMount=()=>{
@@ -42,24 +40,31 @@ class Search extends React.Component{
     handelsubmit=(id)=>{
         axios.get('http://127.0.0.1:8000/api/edit/'+id).then(res=>{
             console.log(res.data);
-            this.setState({
-                Nom2:res.data.Nom,
-                id2:res.data.id
-            })
+            // this.setState({
+            //     // Nom2:res.data.Nom,
+            //     // id2:res.data.id
+            //      Nom2 : [...res.data.Nom, res.data.Nom]
+            // })
+            var newArr = this.state.list2;
+            newArr.push(res.data.Nom);
+            this.setState({list2:newArr})
+            console.log(this.state.list2);
         })
         let aa=this.state.list;
-        const index=aa.indexOf(id);
-        // this.setState({bb:index});
-        
+        const index=aa.indexOf(id);    
         aa.splice(index,1);
     }
-        handeldelete=()=>{
-            // let aa=this.state.Nom2;
-            // const index=aa.indexOf(id2);
-            // // this.setState({bb:index});
-            
-            // aa.splice(index,1);
-            this.setState({Nom2:''});
+
+        handeldelete=(value)=>{
+            let aa=this.state.list2;
+        const index=aa.indexOf(value);
+        
+        
+        aa.splice(index,1);
+        // var newArr = this.state.list;
+        //     newArr.push(value);
+        //     this.setState({list:newArr});
+            // console.log(newArr);
             this.afficheall();
         }
     render(){
@@ -78,9 +83,9 @@ class Search extends React.Component{
                     <tbody>
                         {this.state.list.map((value)=>(
                             <tr key={value.id}>
-                            <td>{value.id}</td>
+                            {/* <td>{value.id}</td> */}
                             <td>{value.Nom}</td>
-                            <td>{value.Prenom}</td>
+                            {/* <td>{value.Prenom}</td> */}
                             <td><button onClick={()=>this.handelsubmit(value.id)}>Ajouter</button></td>
                            
                             </tr>
@@ -92,10 +97,17 @@ class Search extends React.Component{
                         <th>Nom</th>
                     </thead>
                     <tbody>
-                            <tr>
-                            <td>{this.state.Nom2}</td>
-                            <td><button onClick={()=>this.handeldelete()}>delete</button></td>
-                            </tr>
+                            
+                           
+                            {this.state.list2.map((value)=>(
+                                <tr>
+                                    <td>{value}</td>
+                                     {/* <td>{this.state.Nom2}</td> */}
+                                    <td><button onClick={()=>this.handeldelete(value)}>delete</button></td>
+                                </tr>
+                             ))}
+                            
+                            
                     </tbody>
                 </table>
             </div>
