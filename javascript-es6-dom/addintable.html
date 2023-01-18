@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="Nom" name="Nom">
+    <button onclick="add()" type="submit">Ajouter</button>
+    <script>
+        function add()
+        {
+            var table=[];
+           var nom= document.getElementById('Nom').value;
+            const afficher=table.push(nom);
+            console.log(table);
+            var x = document.createElement("TABLE");
+            x.setAttribute("id", "myTable");
+            document.body.appendChild(x);
+
+//   table.forEach(element => {
+//     var y = document.createElement("TR");
+//   y.setAttribute("id", "myTr");
+//   var t = document.createTextNode(element);
+//   y.appendChild(t);
+//   document.getElementById("myTable").appendChild(y);
+// //     var z = document.createElement("TD");
+// //   var t = document.createTextNode(element);
+// //   z.appendChild(t);
+// //   document.getElementById("myTr").appendChild(z);
+//             });
+  for (var i = 0; i<table.length; i++) {
+    console.log(table[i]);
+    var y = document.createElement("TR");
+  y.setAttribute("id", "myTr");
+  var t = document.createTextNode(table[i]);
+  y.appendChild(t);
+  document.getElementById("myTable").appendChild(y);
+  }
+  document.getElementById('Nom').value='';
+//   const months = ['March', 'Jan', 'Feb', 'Dec'];
+// months.sort();
+// console.log(months);
+
+//methode1
+// var x = document.createElement("text");
+//             x.setAttribute("id", "mytext");
+//             document.body.appendChild(x);
+//   var t = document.createTextNode('hello iman najim');
+//   x.appendChild(t);
+//   document.getElementById("mytext").appendChild(x);
+//methode2
+  const para = document.createElement("p");
+para.innerText = "This is a paragraph";
+document.body.appendChild(para);
+        }
+    </script>
+</body>
+</html>
