@@ -2,9 +2,10 @@ import React from "react";
 import axios from "axios";
 class Home extends React.Component{
     state={
-        dataproducts:[],id:'',title:'',
-        description:'',price:'',discountPercentage:'',
-        rating:'',stock:'',brand:'',category:'',thumbnail:''
+        dataproducts:[],id:'',
+        // title:'',
+        // description:'',price:'',discountPercentage:'',
+        // rating:'',stock:'',brand:'',category:'',thumbnail:''
     }
     Afficherproducts=()=>{
         axios.get('https://dummyjson.com/products').then(res=>{
@@ -29,27 +30,27 @@ class Home extends React.Component{
     //         })
     //     })
     // }
-    handeledit=(id)=>{
-        axios.get('https://dummyjson.com/products/'+id).then(res=>{
-            console.log(res.data);
-            axios.post('http://127.0.0.1:8000/api/ajouter',res.data)
-                    // this.setState({
-                    //     id:res.data.id,
-                    //     title:res.data.title,
-                    //     description:res.data.description,
-                    //     price:res.data.price,
-                    //     discountPercentage:res.data.discountPercentage,
-                    //     rating:res.data.rating,
-                    //     stock:res.data.stock,
-                    //     brand:res.data.brand,
-                    //     category:res.data.category,
-                    //     thumbnail:res.data.thumbnail
-                    // })
-                })
-                console.log(this.state);
-                // axios.post('http://127.0.0.1:8000/api/ajouter',id).then(res=>{
-                //     console.log(res.data);
-                //         })
+    handelsubmit=(value)=>{
+        // axios.get('https://dummyjson.com/products/'+id).then(res=>{
+        //     console.log(res.data);
+        //     axios.post('http://127.0.0.1:8000/api/ajouter',res.data)
+        //             // this.setState({
+        //             //     id:res.data.id,
+        //             //     title:res.data.title,
+        //             //     description:res.data.description,
+        //             //     price:res.data.price,
+        //             //     discountPercentage:res.data.discountPercentage,
+        //             //     rating:res.data.rating,
+        //             //     stock:res.data.stock,
+        //             //     brand:res.data.brand,
+        //             //     category:res.data.category,
+        //             //     thumbnail:res.data.thumbnail
+        //             // })
+        //         })
+                
+                axios.post('http://127.0.0.1:8000/api/ajouter',value).then(res=>{
+                    console.log(res.data);
+                        })
     }
     componentDidMount=()=>{
         this.Afficherproducts();
@@ -89,8 +90,8 @@ class Home extends React.Component{
                             <td value={this.state.discountPercentage}>{value.discountPercentage}</td>
                             {/* <td><img src={value.images[0]} width="250px" height="250px" alt="Canvas Logo" /></td> */}
                             <td><img src={value.thumbnail} width="250px" height="250px" alt="Canvas Logo" /></td>
-                            <td><button onClick={()=>this.handelsubmit(value.id)}>Ajouter</button></td>
-                            <td><button onClick={()=>this.handeledit(value.id)}>edit</button></td>
+                            <td><button onClick={()=>this.handelsubmit(value)}>Ajouter</button></td>
+                            {/* <td><button onClick={()=>this.handeledit(value.id)}>edit</button></td> */}
                         </tr>
                     ))}
                 </tbody>
