@@ -92,3 +92,28 @@ button:not(:disabled), [type=button]:not(:disabled), [type=reset]:not(:disabled)
 *, *::before, *::after {
     box-sizing: border-box;
 }
+/* [class*=card-product] .img-wrap img {
+    height: 100%;
+    max-width: 100%;
+    width: auto;
+} */
+/* .img-wrap img {
+    -o-object-fit: cover;
+    object-fit: cover;
+}
+img, svg {
+    vertical-align: middle;
+} */
+/* img {
+    overflow-clip-margin: content-box;
+    overflow: clip;
+    height: 100%;
+    max-width: 100%;
+    width: auto;
+} */
+/* .img-wrap {
+    position: relative;
+    text-align: center;
+    overflow: hidden;
+    display: block;
+} */

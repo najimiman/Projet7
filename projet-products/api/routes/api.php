@@ -20,3 +20,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::post('ajouter',[Favoritecontroller::class,'store'])->name('ajouter');
+Route::get('index',[Favoritecontroller::class,'index'])->name('index');
