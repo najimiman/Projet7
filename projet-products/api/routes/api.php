@@ -21,3 +21,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 Route::post('ajouter',[Favoritecontroller::class,'store'])->name('ajouter');
 Route::get('index',[Favoritecontroller::class,'index'])->name('index');
+Route::delete('destroy/{id}',[Favoritecontroller::class,'destroy'])->name('destroy');
