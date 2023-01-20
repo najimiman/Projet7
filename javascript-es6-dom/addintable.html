@@ -14,7 +14,12 @@
         {
             var table=[];
            var nom= document.getElementById('Nom').value;
-            const afficher=table.push(nom);
+            // const afficher=table.push(nom);
+            if(table.length == 0){
+              const afficher=table.push(nom)
+            }else{
+              const afficher=[nom, ...table]
+            }
             console.log(table);
             var x = document.createElement("TABLE");
             x.setAttribute("id", "myTable");
