@@ -56,18 +56,18 @@ class Home extends React.Component {
                         <form class="form-inline">
                             <input class="form-control mr-sm-2" type="search" name="category" id="category" onChange={this.handeleproducts} placeholder="Search" aria-label="Search" />
                             <a class="btn btn-primary" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
-                                Link with href
+                                Carte favoris
                             </a>
                             </form>
                             {/* <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel"> */}
                             <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
                                 <div class="offcanvas-header">
-                                    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
+                                    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Fovorise</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                                 </div>
                                 <div class="offcanvas-body">
                                     <div>
-                                        Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images, lists, etc.
+                                       <h1>List favoris</h1>
                                     </div>
                                     <div class="dropdown mt-3">
                                         {this.state.datafavorite.map((value) => (
