@@ -9,58 +9,38 @@
 <body>
     <input type="text" id="Nom" name="Nom">
     <button onclick="add()" type="submit">Ajouter</button>
+    <table id="table"></table>
     <script>
+      //exercice 1
         function add()
         {
-            var table=[];
            var nom= document.getElementById('Nom').value;
-            // const afficher=table.push(nom);
-            if(table.length == 0){
-              const afficher=table.push(nom)
-            }else{
-              const afficher=[nom, ...table]
-            }
-            console.log(table);
-            var x = document.createElement("TABLE");
-            x.setAttribute("id", "myTable");
-            document.body.appendChild(x);
-
-//   table.forEach(element => {
-//     var y = document.createElement("TR");
-//   y.setAttribute("id", "myTr");
-//   var t = document.createTextNode(element);
-//   y.appendChild(t);
-//   document.getElementById("myTable").appendChild(y);
-// //     var z = document.createElement("TD");
-// //   var t = document.createTextNode(element);
-// //   z.appendChild(t);
-// //   document.getElementById("myTr").appendChild(z);
-//             });
-  for (var i = 0; i<table.length; i++) {
-    console.log(table[i]);
-    var y = document.createElement("TR");
-  y.setAttribute("id", "myTr");
-  var t = document.createTextNode(table[i]);
-  y.appendChild(t);
-  document.getElementById("myTable").appendChild(y);
-  }
-  document.getElementById('Nom').value='';
-//   const months = ['March', 'Jan', 'Feb', 'Dec'];
-// months.sort();
-// console.log(months);
-
-//methode1
-// var x = document.createElement("text");
-//             x.setAttribute("id", "mytext");
-//             document.body.appendChild(x);
-//   var t = document.createTextNode('hello iman najim');
-//   x.appendChild(t);
-//   document.getElementById("mytext").appendChild(x);
-//methode2
-  const para = document.createElement("p");
-para.innerText = "This is a paragraph";
-document.body.appendChild(para);
-        }
+           var table = document.getElementsByTagName('table')[0]; 
+           var newRow = table.insertRow(table.rows[0]);
+           var cel1 = newRow.insertCell(0);
+            cel1.innerHTML = nom;
+            document.getElementById('Nom').value = "";
+          }
+        //exercice 2
+        //methode1
+        // var x = document.createElement("text");
+        //             x.setAttribute("id", "mytext");
+        //             document.body.appendChild(x);
+        //   var t = document.createTextNode('hello iman najim');
+        //   x.appendChild(t);
+        //   document.getElementById("mytext").appendChild(x);
+        //methode2
+          const para = document.createElement("p");
+        para.innerText = "This is a paragraph";
+        document.body.appendChild(para);
+      //exercice 3
+      const Inscription = (age,condition) =>{
+        condition = () =>{
+            return age<30 ? 'true' : 'false';
+      }
+        console.log(condition());
+      }
+      Inscription(34);
     </script>
 </body>
 </html>
