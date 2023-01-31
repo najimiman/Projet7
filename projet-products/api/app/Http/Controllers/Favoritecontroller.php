@@ -16,7 +16,10 @@ class Favoritecontroller extends Controller
     {
         return Favorite::all();
     }
-
+    public function countfavorite(){
+        $favorite=Favorite::all();
+        return $favorite->count();
+    }
     /**
      * Show the form for creating a new resource.
      *

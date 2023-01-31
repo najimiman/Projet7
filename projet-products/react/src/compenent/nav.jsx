@@ -10,16 +10,31 @@ class Nav extends React.Component {
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            {/* <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li> */}
                             <li class="nav-item">
                                 <form class="d-flex" role="search">
                                     <input class="form-control mr-sm-2" type="search" name="category" id="category" onChange={this.props.handeleproducts} placeholder="Search" aria-label="Search" />
                                 </form>
                             </li>
+                            
+                            <li class="nav-item ms-3">
+                            {/* <select onChange={this.props.handelfilter} id="input">
+                                <option value="vide">category</option>
+                                {this.props.category.map((item)=>(
+                                    <option value={item.id} key={item.id}>{item}</option>
+                                ))}
+                            </select> */}
+                            <div class="dropdown">
+                                <select onChange={this.props.handelfilter} class="btn btn-secondary dropdown-toggle" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style={{background: 'white', color:'black'}}>
+                                    <option value="vide">category</option>
+                                    {this.props.category.map((item)=>(
+                                        <option value={item.id} key={item.id} class="dropdown-item">{item}</option>
+                                        ))}
+                                </select>
+                            </div>
+                        </li>
                         </ul>
                         <form class="d-flex" role="search">
+                            <label htmlFor="" style={{ color: 'red' }}>{this.props.countf}</label>
                             <a class="btn" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" style={{ color: 'red' }} fill="currentColor" class="bi bi-emoji-heart-eyes" viewBox="0 0 16 16">
                                     <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />

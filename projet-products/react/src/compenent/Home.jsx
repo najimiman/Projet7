@@ -5,7 +5,7 @@ import Nav from "./nav";
 import Carte from "./Carte";
 class Home extends React.Component {
     state = {
-        dataproducts: [], id: '', datafavorite: []
+        dataproducts: [], id: '', datafavorite: [],countf:'',category:[]
         // title:'',
         // description:'',price:'',discountPercentage:'',
         // rating:'',stock:'',brand:'',category:'',thumbnail:''
@@ -25,6 +25,27 @@ class Home extends React.Component {
             })
         })
     }
+    handelfilter=(e)=>{
+        console.log(e.target.value);
+        axios.get('https://dummyjson.com/products/category/' + e.target.value).then(res => {
+            if(e.target.value!="vide"){
+                this.setState({
+                    dataproducts: res.data.products
+                })
+            }
+            else if(e.target.value=="vide"){
+                this.Afficherproducts();
+            }
+        })
+    }
+    handelcategory=()=>{
+        axios.get('https://dummyjson.com/products/categories').then(res => {
+            console.log(res.data);
+            this.setState({
+                category: res.data
+            })
+        })
+    }
     affichefavorite = () => {
         axios.get('http://127.0.0.1:8000/api/index').then(res => {
             console.log(res.data);
@@ -35,6 +56,7 @@ class Home extends React.Component {
         axios.post('http://127.0.0.1:8000/api/ajouter', value).then(res => {
             console.log(res.data);
             this.affichefavorite();
+            this.handelcount();
         })
         
     }
@@ -42,17 +64,30 @@ class Home extends React.Component {
         axios.delete('http://127.0.0.1:8000/api/destroy/' + id).then(res => {
             console.log(res.data);
             this.affichefavorite();
+            this.handelcount();
+        })
+    }
+    handelcount=()=>{
+        axios.get('http://127.0.0.1:8000/api/countfavorite').then(res => {
+            console.log(res.data);
+            this.setState({ countf: res.data })
         })
     }
     componentDidMount = () => {
         this.Afficherproducts();
         this.affichefavorite();
+        this.handelcount();
+        this.handelcategory();
     }
     render() {
         return (
             <div >
                 <div>
-                        <Nav handeleproducts={this.handeleproducts}/>
+                        <Nav handeleproducts={this.handeleproducts}
+                        handelfilter={this.handelfilter}
+                        countf={this.state.countf}
+                        category={this.state.category}
+                        />
                             {/* <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel"> */}
                         <Carte handeledelete={this.handeledelete}
                         lista={this.state.datafavorite}/>
