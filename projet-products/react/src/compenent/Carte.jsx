@@ -4,12 +4,12 @@ class Carte extends React.Component {
         return (
             <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
                 <div class="offcanvas-header">
-                    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Fovorise</h5>
+                    <h5 class="offcanvas-title" id="offcanvasExampleLabel">Panie</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
                 <div class="offcanvas-body">
                     <div>
-                        <h1>List favoris</h1>
+                        <h1>List panie</h1>
                     </div>
                     <div class="container-fluid">
                         {this.props.lista.map((value) => (
