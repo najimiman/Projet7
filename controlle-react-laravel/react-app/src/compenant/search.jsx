@@ -37,41 +37,27 @@ class Search extends React.Component{
     // componentDidMount=()=>{
     //     this.afficheall();
     // }
-    handelsubmit=(id)=>{
-        axios.get('http://127.0.0.1:8000/api/edit/'+id).then(res=>{
-            console.log(res.data);
-            // this.setState({
-            //     // Nom2:res.data.Nom,
-            //     // id2:res.data.id
-            //      Nom2 : [...res.data.Nom, res.data.Nom]
-            // })
-            var newArr = this.state.list2;
-            newArr.push(res.data.Nom);
-            this.setState({list2:newArr})
-            console.log(this.state.list2);
-        })
-        let aa=this.state.list;
-        const index=aa.indexOf(id);    
-        aa.splice(index,1);
+    handelsubmit=(value)=>{
+        this.setState({ list2: [...this.state.list2, value] });
+        // this.setState((prevState) => ({
+        //     list: prevState.list.filter((item) => item !== value),
+        //   }));
+        let filterarray = this.state.list.filter(item => item !== value)
+        this.setState({list: filterarray});
     }
 
         handeldelete=(value)=>{
-            let aa=this.state.list2;
-        const index=aa.indexOf(value);
-        
-        
-        aa.splice(index,1);
-        // var newArr = this.state.list;
-        //     newArr.push(value);
-        //     this.setState({list:newArr});
-            // console.log(newArr);
-            this.afficheall();
+        console.log(value);
+        // const { datatache } = this.state;
+        this.setState({ list: [...this.state.list, value] });
+        this.setState((prevState) => ({
+            list2: prevState.list2.filter((item) => item !== value),
+          }));
         }
     render(){
         return(
             <div>
                 <h1>hello search1</h1>
-                {/* <h1>{this.state.bb}</h1> */}
                 <input id="Nom" name="Nom" onChange={this.handelsearch}/>
                 <h1 value={this.state.Result} name='message'>{this.state.Result}</h1>
                 <h1>hello search2</h1>
@@ -86,7 +72,7 @@ class Search extends React.Component{
                             {/* <td>{value.id}</td> */}
                             <td>{value.Nom}</td>
                             {/* <td>{value.Prenom}</td> */}
-                            <td><button onClick={()=>this.handelsubmit(value.id)}>Ajouter</button></td>
+                            <td><button onClick={()=>this.handelsubmit(value)}>Ajouter</button></td>
                            
                             </tr>
                         ))}
@@ -101,7 +87,7 @@ class Search extends React.Component{
                            
                             {this.state.list2.map((value)=>(
                                 <tr>
-                                    <td>{value}</td>
+                                    <td>{value.Nom}</td>
                                      {/* <td>{this.state.Nom2}</td> */}
                                     <td><button onClick={()=>this.handeldelete(value)}>delete</button></td>
                                 </tr>
